@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>CIMSHOP - Stok Jualan Saya</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
+
+    body {
+      font-family: 'Baloo 2', cursive, Arial, sans-serif;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fbc1cc 100%);
+      padding: 30px;
+      color: #663366;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h2 {
+      font-size: 3.5rem;
+      color: #fff0f6;
+      margin-bottom: 10px;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      text-shadow:
+        3px 3px 0 #ff69b4,
+        6px 6px 0 #ff1493;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 40px;
+      color: #880e4f;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .grid {
+      width: 100%;
+      max-width: 900px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .item {
+      background: #ffd1dc;
+      border-radius: 15px;
+      box-shadow: 0 6px 12px rgba(255, 105, 180, 0.3);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(255, 20, 147, 0.6);
+    }
+
+    .item img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      border: 3px solid #ff69b4;
+      background: #fff0f6;
+    }
+
+    .product-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #880e4f;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>CIMSHOP</h2>
+  <h1>📦 Stok Jualan Saya</h1>
+
+  <div class="grid" id="stockGrid"></div>
+
+  <script>
+    const stockGrid = document.getElementById('stockGrid');
+
+    // Data stok produk, update nama dan file gambar di folder 'images'
+    const products = [
+      { name: "PL sabun cuci muka 20K", image: "PRODUK/SABUN-CUCI-MUKA.jpeg" },
+      { name: "Body wash (segel) 50K", image: "images/sepatu-sneakers-putih.jpg" },
+      { name: "Topi Baseball", image: "images/topi-baseball.jpg" },
+      { name: "Kacamata Hitam", image: "images/kacamata-hitam.jpg" },
+      { name: "Jaket Denim", image: "images/jaket-denim.jpg" },
+      { name: "Jam Tangan", image: "images/jam-tangan.jpg" }
+    ];
+
+    // Buat kotak produk berdasarkan data di atas
+    products.forEach(product => {
+      const item = document.createElement('div');
+      item.className = 'item';
+
+      const img = document.createElement('img');
+      img.src = product.image;
+      img.alt = product.name;
+
+      const name = document.createElement('div');
+      name.className = 'product-name';
+      name.textContent = product.name;
+
+      item.appendChild(img);
+      item.appendChild(name);
+      stockGrid.appendChild(item);
+    });
+  </script>
+
+</body>
+</html>
